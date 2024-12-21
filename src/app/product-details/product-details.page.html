@@ -1,0 +1,31 @@
+<ion-header>
+  <ion-toolbar>
+    <ion-buttons slot="start">
+      <ion-back-button></ion-back-button>
+    </ion-buttons>
+    <ion-title>Product Details</ion-title>
+  </ion-toolbar>
+</ion-header>
+
+<ion-content>
+  <!-- Action Buttons -->
+  <div class="actions">
+    <ion-button expand="block" color="primary" (click)="editProduct()">Modify</ion-button>
+    <ion-button expand="block" color="danger" (click)="deleteProduct()">Delete</ion-button>
+  </div>
+
+  <!-- Product Image -->
+  <div class="product-image">
+    <img [src]="product?.images[0]" [alt]="product?.name" />
+  </div>
+
+  <!-- Product Information -->
+  <div class="product-info">
+    <h1>{{ product?.name }}</h1>
+    <p class="category"><strong>Category:</strong> {{ product?.category }}</p>
+    <p class="price"><strong>Price:</strong> {{ product?.price | currency }}</p>
+    <p class="description"><strong>Description:</strong> {{ product?.description }}</p>
+    <p class="stock" *ngIf="product?.stock === 0" style="color: red;"><strong>Out of Stock</strong></p>
+    <p class="stock" *ngIf="product?.stock > 0"><strong>Stock:</strong> {{ product?.stock }}</p>
+  </div>
+</ion-content>
